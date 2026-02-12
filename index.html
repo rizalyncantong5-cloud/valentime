@@ -1,126 +1,266 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Be My Valentine</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flower Greeting Card</title>
 <style>
-body{
+  body{
     margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    background: radial-gradient(circle at top, #ffffff, #ffe6f0 55%, #ffc3dd);
+    font-family: system-ui, Arial, sans-serif;
+  }
+
+  .card{
+    width:min(820px, 94vw);
+    background: rgba(255,255,255,.78);
+    border-radius:26px;
+    padding:26px;
+    box-shadow:0 24px 60px rgba(0,0,0,.14);
+    backdrop-filter: blur(7px);
+    display:grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap:22px;
     align-items:center;
-    background:linear-gradient(to top,#ffe6f0,#ffffff);
-    font-family: Arial, sans-serif;
-    text-align:center;
-}
+  }
 
-.card{
-    background:white;
-    padding:40px;
-    border-radius:25px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
-    width:450px;
-}
+  .art{
+    border-radius:22px;
+    padding:18px;
+    background: linear-gradient(to bottom right, rgba(255,255,255,.75), rgba(255,255,255,.35));
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+  }
 
-h1{
-    color:#b30059;
-    margin-bottom:20px;
-}
+  .content{
+    text-align:left;
+    padding:6px 10px;
+  }
 
-/* Button Style */
-button{
-    padding:10px 25px;
-    margin:10px;
-    font-size:18px;
+  h1{
+    margin:0 0 10px;
+    font-size:34px;
+    color:#9a004a;
+    letter-spacing:.4px;
+    font-family: Georgia, serif;
+  }
+
+  .to{
+    margin:0 0 14px;
+    font-size:16px;
+    color:#5a2c44;
+    opacity:.9;
+  }
+
+  .msg{
+    margin:0 0 16px;
+    font-size:16px;
+    line-height:1.55;
+    color:#3d2632;
+  }
+
+  .from{
+    margin-top:12px;
+    font-weight:600;
+    color:#8a0042;
+  }
+
+  .controls{
+    margin-top:14px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+
+  input{
+    flex:1;
+    min-width:180px;
+    padding:10px 12px;
+    border-radius:12px;
+    border:1px solid rgba(0,0,0,.14);
+    outline:none;
+    background: rgba(255,255,255,.85);
+  }
+
+  button{
+    padding:10px 14px;
     border:none;
     border-radius:12px;
     cursor:pointer;
-    transition:0.3s;
-}
-
-#yes{
-    background:#ff3366;
+    background:#ff2f75;
     color:white;
-}
+    font-weight:600;
+    transition:.22s;
+  }
+  button:hover{ transform: translateY(-2px); }
 
-#no{
-    background:#777;
-    color:white;
-}
+  .small{
+    font-size:12px;
+    color:#6a3a53;
+    margin-top:8px;
+    opacity:.85;
+  }
 
-button:hover{
-    transform:scale(1.1);
-}
-
-#result{
-    margin-top:15px;
-    font-weight:bold;
-    color:#cc0066;
-}
-
-/* Floating animation */
-.float{
-    animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-8px);}
-    100%{transform:translateY(0);}
-}
+  @media (max-width:760px){
+    .card{ grid-template-columns: 1fr; text-align:center; }
+    .content{ text-align:center; }
+  }
 </style>
 </head>
 <body>
 
 <div class="card">
+  <div class="art">
+    <!-- Custom Flower Bouquet SVG (my own) -->
+    <svg viewBox="0 0 520 520" width="100%" height="auto" role="img" aria-label="Bouquet of flowers">
+      <defs>
+        <radialGradient id="petalPink" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#ffe6f2"/>
+          <stop offset="55%" stop-color="#ff66a8"/>
+          <stop offset="100%" stop-color="#b10055"/>
+        </radialGradient>
+        <radialGradient id="petalRed" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#ffe0e6"/>
+          <stop offset="55%" stop-color="#ff335c"/>
+          <stop offset="100%" stop-color="#9b001d"/>
+        </radialGradient>
+        <radialGradient id="petalPeach" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#ffe8da"/>
+          <stop offset="55%" stop-color="#ff8aa0"/>
+          <stop offset="100%" stop-color="#b83a55"/>
+        </radialGradient>
+        <linearGradient id="stem" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#50d18a"/>
+          <stop offset="100%" stop-color="#0a6b3a"/>
+        </linearGradient>
+        <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#fff1f8"/>
+          <stop offset="55%" stop-color="#ffb6db"/>
+          <stop offset="100%" stop-color="#ff71b5"/>
+        </linearGradient>
+        <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".16"/>
+        </filter>
 
-<!-- Realistic Rose SVG -->
-<svg class="float" width="180" height="220" viewBox="0 0 200 250">
+        <!-- Flower symbol -->
+        <g id="flower">
+          <circle cx="0" cy="0" r="28" opacity=".95"/>
+          <circle cx="-24" cy="0" r="28" opacity=".95"/>
+          <circle cx="24" cy="0" r="28" opacity=".95"/>
+          <circle cx="0" cy="-24" r="28" opacity=".95"/>
+          <circle cx="0" cy="24" r="28" opacity=".95"/>
+          <circle cx="0" cy="0" r="16" fill="#ffd85c"/>
+          <circle cx="-5" cy="-6" r="6" fill="rgba(255,255,255,.25)"/>
+        </g>
+      </defs>
 
-<!-- Stem -->
-<rect x="95" y="120" width="10" height="120" fill="green"/>
+      <!-- paper wrap -->
+      <path d="M95 220
+               C155 190, 215 200, 260 220
+               C305 200, 365 190, 425 220
+               L480 470
+               C405 505, 340 520, 260 525
+               C180 520, 115 505, 40 470
+               Z"
+            fill="url(#paper)" filter="url(#shadow)"/>
 
-<!-- Leaves -->
-<ellipse cx="75" cy="150" rx="25" ry="12" fill="#2e8b57"/>
-<ellipse cx="125" cy="170" rx="25" ry="12" fill="#2e8b57"/>
+      <!-- stems -->
+      <g stroke="url(#stem)" stroke-width="10" stroke-linecap="round" opacity=".95">
+        <path d="M170 250 C150 310, 165 360, 215 430"/>
+        <path d="M220 240 C215 310, 230 365, 250 445"/>
+        <path d="M260 235 C260 310, 260 365, 260 455"/>
+        <path d="M300 240 C305 310, 290 365, 270 445"/>
+        <path d="M350 250 C370 310, 355 360, 305 430"/>
+      </g>
 
-<!-- Rose petals -->
-<defs>
-<radialGradient id="roseGrad" cx="50%" cy="50%" r="50%">
-<stop offset="0%" stop-color="#ff99aa"/>
-<stop offset="100%" stop-color="#cc0033"/>
-</radialGradient>
-</defs>
+      <!-- leaves -->
+      <g fill="#2ea864" opacity=".92">
+        <path d="M215 320 C170 315, 160 345, 198 365 C228 380, 245 340, 215 320Z"/>
+        <path d="M305 330 C350 322, 365 355, 325 375 C295 390, 278 350, 305 330Z"/>
+        <path d="M260 360 C230 380, 245 415, 285 405 C308 399, 298 372, 260 360Z"/>
+      </g>
 
-<circle cx="100" cy="90" r="45" fill="url(#roseGrad)"/>
-<circle cx="85" cy="85" r="30" fill="#e60039" opacity="0.8"/>
-<circle cx="115" cy="85" r="30" fill="#e60039" opacity="0.8"/>
-<circle cx="100" cy="70" r="28" fill="#ff3366" opacity="0.9"/>
+      <!-- flowers cluster -->
+      <g filter="url(#shadow)">
+        <g transform="translate(155 140)">
+          <use href="#flower" fill="url(#petalPink)"/>
+        </g>
+        <g transform="translate(255 110)">
+          <use href="#flower" fill="url(#petalRed)"/>
+        </g>
+        <g transform="translate(355 145)">
+          <use href="#flower" fill="url(#petalPeach)"/>
+        </g>
+        <g transform="translate(210 190) scale(.95)">
+          <use href="#flower" fill="url(#petalPeach)"/>
+        </g>
+        <g transform="translate(305 190) scale(.95)">
+          <use href="#flower" fill="url(#petalPink)"/>
+        </g>
 
-</svg>
+        <!-- small filler buds -->
+        <g opacity=".95">
+          <circle cx="185" cy="215" r="8" fill="#ff6fb0"/>
+          <circle cx="210" cy="210" r="6" fill="#ff335c"/>
+          <circle cx="240" cy="220" r="7" fill="#ff9cc8"/>
+          <circle cx="330" cy="220" r="8" fill="#ff6fb0"/>
+          <circle cx="355" cy="210" r="6" fill="#ff335c"/>
+          <circle cx="380" cy="220" r="7" fill="#ff9cc8"/>
+        </g>
+      </g>
 
-<h1>Can you be my Valentine?</h1>
+      <!-- ribbon -->
+      <g>
+        <circle cx="260" cy="400" r="16" fill="#b80052"/>
+        <path d="M255 395 C210 365, 180 380, 188 412
+                 C196 445, 235 448, 255 420Z" fill="#d20062"/>
+        <path d="M265 395 C310 365, 340 380, 332 412
+                 C324 445, 285 448, 265 420Z" fill="#d20062"/>
+        <path d="M245 420 C235 448, 220 470, 202 495
+                 C235 496, 252 486, 266 463
+                 C262 446, 255 432, 245 420Z" fill="#b80052"/>
+        <path d="M275 420 C285 448, 300 470, 318 495
+                 C285 496, 268 486, 254 463
+                 C258 446, 265 432, 275 420Z" fill="#b80052"/>
+      </g>
+    </svg>
+  </div>
 
-<button id="yes">Yes 💖</button>
-<button id="no">No</button>
+  <div class="content">
+    <h1 id="headline">A Little Bouquet for You 💐</h1>
+    <p class="to">To: <span id="toName">Someone Special</span></p>
 
-<div id="result"></div>
+    <p class="msg" id="message">
+      Wishing you a Valentine’s Day filled with warmth, smiles, and beautiful moments.
+      Thank you for being someone I truly appreciate.
+      <br><br>
+      Will you be my Valentine?
+    </p>
 
+    <div class="from" id="fromLine">— From: Me</div>
+
+    <div class="controls">
+      <input id="nameInput" type="text" placeholder="Type receiver name (e.g., Rizalyn)" />
+      <button id="applyBtn">Apply Name</button>
+    </div>
+
+    <div class="small">Tip: You can print this page to make it a real card (Ctrl+P).</div>
+  </div>
 </div>
 
 <script>
-document.getElementById("yes").onclick = function(){
-    document.getElementById("result").innerHTML =
-    "YAY!! 💐🥰";
-};
+  const toName = document.getElementById("toName");
+  const input = document.getElementById("nameInput");
+  const btn = document.getElementById("applyBtn");
 
-document.getElementById("no").onclick = function(){
-    document.getElementById("result").innerHTML =
-    "Are you really sure? 🥺";
-};
+  btn.addEventListener("click", () => {
+    const val = input.value.trim();
+    toName.textContent = val ? val : "Someone Special";
+  });
 </script>
 
 </body>
 </html>
-
