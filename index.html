@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine</title>
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to top,#ffe6f0,#ffffff);
+    font-family: Arial, sans-serif;
+    text-align:center;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+    width:450px;
+}
+
+h1{
+    color:#b30059;
+    margin-bottom:20px;
+}
+
+/* Button Style */
+button{
+    padding:10px 25px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#yes{
+    background:#ff3366;
+    color:white;
+}
+
+#no{
+    background:#777;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+#result{
+    margin-top:15px;
+    font-weight:bold;
+    color:#cc0066;
+}
+
+/* Floating animation */
+.float{
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+    100%{transform:translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<!-- Realistic Rose SVG -->
+<svg class="float" width="180" height="220" viewBox="0 0 200 250">
+
+<!-- Stem -->
+<rect x="95" y="120" width="10" height="120" fill="green"/>
+
+<!-- Leaves -->
+<ellipse cx="75" cy="150" rx="25" ry="12" fill="#2e8b57"/>
+<ellipse cx="125" cy="170" rx="25" ry="12" fill="#2e8b57"/>
+
+<!-- Rose petals -->
+<defs>
+<radialGradient id="roseGrad" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#ff99aa"/>
+<stop offset="100%" stop-color="#cc0033"/>
+</radialGradient>
+</defs>
+
+<circle cx="100" cy="90" r="45" fill="url(#roseGrad)"/>
+<circle cx="85" cy="85" r="30" fill="#e60039" opacity="0.8"/>
+<circle cx="115" cy="85" r="30" fill="#e60039" opacity="0.8"/>
+<circle cx="100" cy="70" r="28" fill="#ff3366" opacity="0.9"/>
+
+</svg>
+
+<h1>Can you be my Valentine?</h1>
+
+<button id="yes">Yes 💖</button>
+<button id="no">No</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+document.getElementById("yes").onclick = function(){
+    document.getElementById("result").innerHTML =
+    "YAY!! 💐🥰";
+};
+
+document.getElementById("no").onclick = function(){
+    document.getElementById("result").innerHTML =
+    "Are you really sure? 🥺";
+};
+</script>
+
+</body>
+</html>
+
